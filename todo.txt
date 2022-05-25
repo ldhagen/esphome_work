@@ -1,0 +1,11 @@
+-----To Do List For ESP32/HA Work-----
+as of 25 May 22
+
+- 4 cell battery pack for dryer mpu sensor
+
+- Deep sleep overnight for dryer mpu sensor
+
+- Expose dryer mpu sensor state to Alexa for relible voice query
+
+- Remove credential secrets from other yaml files and add to this repository
+
