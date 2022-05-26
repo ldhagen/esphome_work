@@ -108,6 +108,9 @@ binary_sensor:
         - text_sensor.template.publish:
             id: dryer
             state: Idle
+            
+
+    
 
 text_sensor:
   - platform: template
