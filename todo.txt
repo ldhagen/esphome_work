@@ -1,7 +1,6 @@
 -----To Do List For ESP32/HA Work-----
 as of 25 May 22
 
-- 4 cell battery pack for dryer mpu sensor
 
 - Deep sleep overnight for dryer mpu sensor
 
@@ -9,3 +8,7 @@ as of 25 May 22
 
 - Remove credential secrets from other yaml files and add to this repository
 
+- Publish batter pack level remotely
+
+----------------------------------------------------------------------------
+xxx 4 cell battery pack for dryer mpu sensor  xxx
