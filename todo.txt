@@ -1,14 +1,17 @@
 -----To Do List For ESP32/HA Work-----
-as of 2 Jun 22
+as of 3 Jun 22
 
 
 - Deep sleep overnight for dryer mpu sensor
 
-- Expose dryer mpu sensor state to Alexa for relible voice query
-
 - Remove credential secrets from other yaml files and add to this repository
-
-- Publish battery pack level remotely
 
 ----------------------------------------------------------------------------
 xxx 4 cell battery pack for dryer mpu sensor  xxx
+xxx- Expose dryer mpu sensor state to Alexa for relible voice query xxx
+xxx- Publish battery pack level remotelyxxx
+     1.805 full (1.5 changed to fresh)
+
+
+
+
