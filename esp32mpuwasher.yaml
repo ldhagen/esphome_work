@@ -1,5 +1,5 @@
 esphome:
-  name: esp32mpu6050a
+  name: esp32mpuwasher
   on_boot:
     then:
        script.execute: consider_deep_sleep
@@ -16,7 +16,7 @@ logger:
 api:
 
 ota:
-  password: "4517677221c08ed25ec146bdc3b6b9d9"
+  password: "f8fb9283f7d3c3a355581ad000916eb9"
 
 wifi:
   ssid: !secret wifi_ssid
@@ -24,9 +24,9 @@ wifi:
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: "Esp32Mpu6050A Fallback Hotspot"
-    password: "Evo2khrJ7Zji"
-
+    ssid: "Esp32Mpuwasher Fallback Hotspot"
+    password: "DLVEhor7dV76"
+  
 i2c:
   sda: 21
   scl: 22
@@ -34,19 +34,13 @@ i2c:
   id: bus_a
   
 globals:
-  - id: dryer_delta_accel_x
-    type: float
-  - id: dryer_delta_accel_y
-    type: float
-  - id: dryer_delta_accel_z
-    type: float
   - id: washer_delta_accel_x
     type: float
   - id: washer_delta_accel_y
     type: float
   - id: washer_delta_accel_z
     type: float
-    
+
 
 # Deep Sleep
 
@@ -59,8 +53,8 @@ deep_sleep:
 sensor:
   - platform: adc
     pin: GPIO035
-    name: "Dryer Battery Volts"
-    id: deep_sleep_battery_volts
+    name: "Washer Battery Volts"
+    id: washer_battery_volts
     update_interval: 10min
     attenuation: auto 
     accuracy_decimals: 3
@@ -71,40 +65,41 @@ sensor:
     address: 0x68
     accel_x:
       accuracy_decimals: 1
-      name: "Dryer Accel X"
-      id: dryer_accel_x
+      name: "Washer Accel X"
+      id: washer_accel_x
       internal: true
       filters:
         - lambda: |-
-            id(dryer_delta_accel_x) = fabsf(id(dryer_accel_x).state - x);
+            id(washer_delta_accel_x) = fabsf(id(washer_accel_x).state - x);
             return(x);
     accel_y:
       accuracy_decimals: 1
-      name: "Dryer Accel Y"
-      id: dryer_accel_y
+      name: "Washer Accel Y"
+      id: washer_accel_y
       internal: true
       filters:
         - lambda: |-
-            id(dryer_delta_accel_y) = fabsf(id(dryer_accel_y).state - x);
+            id(washer_delta_accel_y) = fabsf(id(washer_accel_y).state - x);
             return(x);
     accel_z:
       accuracy_decimals: 1
-      name: "Dryer Accel Z"
-      id: dryer_accel_z
+      name: "Washer Accel Z"
+      id: washer_accel_z
       internal: true
       filters:
         - lambda: |-
-            id(dryer_delta_accel_z) = fabsf(id(dryer_accel_z).state - x);
+            id(washer_delta_accel_z) = fabsf(id(washer_accel_z).state - x);
             return(x);
     temperature:
-      name: "Dryer Temperature"
+      name: "Washer Temperature"
       filters:
         - heartbeat: 60s
         
+
 binary_sensor:
   - platform: homeassistant
-    id: dryer_status
-    entity_id: input_boolean.dryer_status
+    id: washer_status
+    entity_id: input_boolean.washer_status
     
   - platform: homeassistant
     id: prevent_deep_sleep
@@ -112,14 +107,14 @@ binary_sensor:
 
   - platform: template
     device_class: vibration
-    name: "Dryer Vibration"
-    id: dryer_vibration
+    name: "Washer Vibration"
+    id: washer_vibration
     lambda: |-
-      if (isnan(id(dryer_delta_accel_x)) or isnan(id(dryer_delta_accel_y)) or isnan(id(dryer_delta_accel_z))) {
-        id(dryer).publish_state("Idle");
+      if (isnan(id(washer_delta_accel_x)) or isnan(id(washer_delta_accel_y)) or isnan(id(washer_delta_accel_z))) {
+        id(washer).publish_state("Idle");
         return {};
       }
-      else if (abs(id(dryer_delta_accel_x)) > 1.0 or abs(id(dryer_delta_accel_y)) > 1.0 or abs(id(dryer_delta_accel_z)) > 1.0) {
+      else if (abs(id(washer_delta_accel_x)) > 1.0 or abs(id(washer_delta_accel_y)) > 1.0 or abs(id(washer_delta_accel_z)) > 1.0) {
         return(true);
       } else {
         return(false);
@@ -130,20 +125,20 @@ binary_sensor:
     on_press:
       then:
         - text_sensor.template.publish:
-            id: dryer
-            state: Drying
+            id: washer
+            state: Washing
             
     on_release:
       then:
         - text_sensor.template.publish:
-            id: dryer
+            id: washer
             state: Idle
             
 text_sensor:
   - platform: template
-    icon: mdi:tumble-dryer
-    name: Dryer
-    id: dryer
+    icon: mdi:washer
+    name: Washer
+    id: washer
 
 script:
   - id: consider_deep_sleep
@@ -158,6 +153,8 @@ script:
           else:
             - deep_sleep.enter: deep_sleep_control
       - script.execute: consider_deep_sleep
+
+
 
 
 captive_portal:
