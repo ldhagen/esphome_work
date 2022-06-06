@@ -1,0 +1,36 @@
+esphome:
+  name: sensor-node-3
+
+esp32:
+  board: esp32doit-devkit-v1
+    
+esp32_ble_tracker:
+
+sensor:
+  - platform: dht
+    pin: GPIO15
+    temperature:
+      name: "Guest Room Temperature"
+    humidity:
+      name: "Guest Room Humidity"
+    update_interval: 60s
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+  password: "9077ca3c02ba71bf604acb07f0b314e4"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Sensor-Node-3 Fallback Hotspot"
+    password: "EiC0EkG4seHe"
+
+captive_portal:

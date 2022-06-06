@@ -1,0 +1,40 @@
+esphome:
+  name: sensor-node-2
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+# Bluetooth Tracker          
+esp32_ble_tracker:
+
+sensor:
+  - platform: dht
+    pin: GPIO23
+    temperature:
+      name: "Garage Temperature"
+    humidity:
+      name: "Garage Humidity"
+    update_interval: 60s
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+  password: "4fa43852ed641556f4459886d0a6e34a"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Sensor-Node-2 Fallback Hotspot"
+    password: "Y151Wm0ZnS9c"
+
+captive_portal:
