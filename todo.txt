@@ -1,17 +1,15 @@
 -----To Do List For ESP32/HA Work-----
-as of 6 Jun 22
+as of 14 Jun 22
 
-- Get esp32-cam running on 3.2 LifePo batteries stepped up to 5v (for stability)
+- Update voltage divider from 100Ks to 740K/680K and test drainage difference
+    ----100Kx2 slightly over 2 days on washer and dryer with use and deep sleep---- 
+- Build esp32-cam portable on 3.2 LiFePo and track longevity with various configs and deep sleeps 
 - Image analsys on esp32-cam (garbage bin movement detection)
-
-
 ----------------------------------------------------------------------------
 xxx 4 cell battery pack for dryer mpu sensor  xxx
 xxx- Expose dryer mpu sensor state to Alexa for relible voice query xxx
 xxx- Publish battery pack level remotely xxx
 xxx- Deep sleep overnight for dryer mpu sensor xxx
 xxx- Remove credential secrets from other yaml files and add to this repository xxx
-
-
-
-
+xxx- Get esp32-cam running on 3.2 LiFePo batteries stepped up to 5v (for stability)xxx
+   ----3.2 works without transformer to 5----
