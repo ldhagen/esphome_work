@@ -119,7 +119,7 @@ binary_sensor:
         id(dryer).publish_state("Idle");
         return {};
       }
-      else if (abs(id(dryer_delta_accel_x)) > 1.0 or abs(id(dryer_delta_accel_y)) > 1.0 or abs(id(dryer_delta_accel_z)) > 1.0) {
+      else if (abs(id(dryer_delta_accel_x)) > 0.3 or abs(id(dryer_delta_accel_y)) > 0.3 or abs(id(dryer_delta_accel_z)) > 0.3) {
         return(true);
       } else {
         return(false);
