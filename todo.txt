@@ -1,6 +1,7 @@
 -----To Do List For ESP32/HA Work-----
 as of 14 Jun 22
 
+- Alexa responses to queries about washer and dryer status
 - Update voltage divider from 100Ks to 740K/680K and test drainage difference
     ----100Kx2 slightly over 2 days on washer and dryer with use and deep sleep---- 
 - Build esp32-cam portable on 3.2 LiFePo and track longevity with various configs and deep sleeps 
