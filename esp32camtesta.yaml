@@ -25,15 +25,43 @@ wifi:
     ssid: "Esp32Camtesta Fallback Hotspot"
     password: "abidOehGp6ob"
 
-output:
+
+
+switch:
   - platform: gpio
-    pin: GPIO4
-    id: gpio_4
-light:
-  - platform: binary
-    output: gpio_4
-    name: flashlightaaa
-    id: camera_flash
+    pin: GPIO04
+    id: gpio_04
+    name: flashlight
+    
+  - platform: gpio
+    pin: GPIO33
+    id: gpio_33
+    name: redled
+    inverted: true
+    
+  - platform: gpio
+    pin: GPIO13
+    id: gpio_13
+    name: greenled
+    
+
+esp32_camera:
+  external_clock:
+    pin: GPIO0
+    frequency: 20MHz
+  i2c_pins:
+    sda: GPIO26
+    scl: GPIO27
+  data_pins: [GPIO5, GPIO18, GPIO19, GPIO21, GPIO36, GPIO39, GPIO34, GPIO35]
+  vsync_pin: GPIO25
+  href_pin: GPIO23
+  pixel_clock_pin: GPIO22
+  power_down_pin: GPIO32
+
+  # Image settings
+  name: Test A Camera
+
+
 
 captive_portal:
     
