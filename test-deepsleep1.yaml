@@ -32,12 +32,54 @@ wifi:
     password: "ftxLnpthdz0T"
 sensor:
   - platform: dht
-    pin: GPIO13
+    pin: GPIO15
     temperature:
-      name: "Deep Sleep Test Room Temperature"
+      name: "Deep Sleep Test DHT11 Room Temperature"
     humidity:
-      name: "Deep Sleep Test Room Humidity"
+      name: "Deep Sleep Test DHT11 Room Humidity"
     update_interval: 60s
+  
+  - platform: adc
+    pin: GPIO035
+    name: "Deep Sleep Battery Volts"
+    id: deep_sleep_battery_volts
+    update_interval: 10min
+    attenuation: auto 
+    accuracy_decimals: 3
+    internal: false
+    
+  - platform: aht10
+    temperature:
+      name: "Deep Sleep AHT10 Temperature"
+    humidity:
+      name: "Deep Sleep AHT10 Humidity"
+    update_interval: 60s
+
+  - platform: mpu6050
+    address: 0x68
+    accel_x:
+      name: "MPU6050 Accel X"
+    accel_y:
+      name: "MPU6050 Accel Y"
+    accel_z:
+      name: "MPU6050 Accel z"
+    gyro_x:
+      name: "MPU6050 Gyro X"
+    gyro_y:
+      name: "MPU6050 Gyro Y"
+    gyro_z:
+      name: "MPU6050 Gyro z"
+    temperature:
+      name: "MPU6050 Temperature"
+        
+
+
+i2c:
+  sda: 21
+  scl: 22
+  scan: true
+  id: bus_a
+
 
 # Deep Sleep
 
@@ -58,6 +100,11 @@ switch:
 - platform: gpio
   pin: GPIO2
   id: blue_led
+  
+- platform: gpio
+  pin: GPIO23
+  id: gpio_23
+  name: external_led
   
 - platform: template
   name: "Blue LED"
