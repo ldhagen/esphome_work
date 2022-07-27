@@ -1,0 +1,37 @@
+esphome:
+  name: ttgo-camera-1
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+  password: "10081d1b80488372cf378927020e2243"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Ttgo-Camera-1 Fallback Hotspot"
+    password: "Dioo2L6cXHdP"
+    
+
+binary_sensor:
+  - platform: gpio
+    pin: 33
+    name: "TTGO PIR Sensor"
+    device_class: motion
+
+
+
+captive_portal:
+    
