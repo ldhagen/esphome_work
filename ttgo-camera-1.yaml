@@ -31,7 +31,22 @@ binary_sensor:
     name: "TTGO PIR Sensor"
     device_class: motion
 
+font:
+  - file: 'FreeMono.ttf'
+    id: font1
+    size: 18
+  
+i2c:
+  sda: 21
+  scl: 22
+  scan: false
 
+display:
+  - platform: ssd1306_i2c
+    model: "SH1106 128x64"
+    address: 0x3C
+    lambda: |-
+      it.printf(64, 20, id(font1), TextAlign::TOP_CENTER, "Hello Judi!");
 
 captive_portal:
     

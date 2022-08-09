@@ -6,15 +6,6 @@ esphome:
 # Bluetooth Tracker          
 esp32_ble_tracker:
 
-sensor:
-  - platform: dht
-    model: DHT11
-    pin: GPIO23
-    temperature:
-      name: "Living Room Temperature"
-    humidity:
-      name: "Living Room Humidity"
-
 # Enable logging
 logger:
 
@@ -32,5 +23,21 @@ wifi:
   ap:
     ssid: "Sensor-Node-1 Fallback Hotspot"
     password: "aiPfhMvWO7eq"
+    
+i2c:
+  sda: 21
+  scl: 22
+  scan: true
+  id: bus_a
+  
+sensor:
+  - platform: aht10
+    temperature:
+      name: "Living Room AHT10 Temperature"
+    humidity:
+      name: "Living Room AHT10 Humidity"
+    update_interval: 60s
+
+
 
 captive_portal:

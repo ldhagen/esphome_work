@@ -119,13 +119,13 @@ binary_sensor:
         id(dryer).publish_state("Idle");
         return {};
       }
-      else if (abs(id(dryer_delta_accel_x)) > 0.3 or abs(id(dryer_delta_accel_y)) > 0.3 or abs(id(dryer_delta_accel_z)) > 0.3) {
+      else if (abs(id(dryer_delta_accel_x)) > 0.9 or abs(id(dryer_delta_accel_y)) > 0.9 or abs(id(dryer_delta_accel_z)) > 0.9) {
         return(true);
       } else {
         return(false);
       }
     filters:
-      - delayed_on: 2sec
+      - delayed_on: 3sec
       - delayed_off: 5min
     on_press:
       then:
