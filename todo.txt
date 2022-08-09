@@ -1,13 +1,13 @@
 -----To Do List For ESP32/HA Work-----
-as of 14 Jun 22
-
-- Alexa responses to queries about washer and dryer status
+as of 9 Aug 22
+- Use transistors to limit power for sensors during deep sleep
 - Update voltage divider from 100Ks to 740K/680K and test drainage difference
     ----100Kx2 slightly over 2 days on washer and dryer with use and deep sleep---- 
 - Build esp32-cam portable on 3.2 LiFePo and track longevity with various configs and deep sleeps 
 - Image analysis on esp32-cam (garbage bin movement detection)
 ----------------------------------------------------------------------------
-xxx 4 cell battery pack for dryer mpu sensor  xxx
+xxx  Alexa responses to queries about washer and dryer status
+xxx  4 cell battery pack for dryer mpu sensor  xxx
 xxx- Expose dryer mpu sensor state to Alexa for relible voice query xxx
 xxx- Publish battery pack level remotely xxx
 xxx- Deep sleep overnight for dryer mpu sensor xxx
