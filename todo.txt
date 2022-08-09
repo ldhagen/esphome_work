@@ -1,7 +1,7 @@
 -----To Do List For ESP32/HA Work-----
 as of 9 Aug 22
 - Use transistors to limit power for sensors during deep sleep
-- Update voltage divider from 100Ks to 740k/1m and test drainage difference
+- Update voltage divider from 100Ks to 740k/1.2m and test drainage difference
     ----100Kx2 slightly over 2 days on washer and dryer with use and deep sleep---- 
 - Build esp32-cam portable on 3.2 LiFePo and track longevity with various configs and deep sleeps 
 - Image analysis on esp32-cam (garbage bin movement detection)
