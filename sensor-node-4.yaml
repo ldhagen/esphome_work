@@ -1,0 +1,48 @@
+esphome:
+  name: sensor-node-4
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+  password: "a3208430816657b90cc4faab9a66f121"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Sensor-Node-4 Fallback Hotspot"
+    password: "8rD3hXrrPPDO"
+i2c:
+  sda: 21
+  scl: 22
+  scan: true
+  id: bus_a
+
+
+sensor:
+  - platform: bme280
+    temperature:
+      name: "BME280 Temperature"
+      oversampling: 16x
+    pressure:
+      name: "BME280 Pressure"
+      filters:
+          - offset: 31
+    humidity:
+      name: "BME280 Humidity"
+    address: 0x76
+    update_interval: 60s
+
+captive_portal:
+    
