@@ -1,5 +1,6 @@
 -----To Do List For ESP32/HA Work-----
-as of 9 Aug 22
+as of 27 Aug 22
+- Create motion sensor to work with back deck light
 - Use transistors to limit power for sensors during deep sleep
 - Update voltage divider from 100Ks to 740k/1m and test drainage difference
     ----100Kx2 slightly over 2 days on washer and dryer with use and deep sleep---- 
