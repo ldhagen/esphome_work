@@ -1,8 +1,7 @@
------To Do List For ESP32/HA Work-----
 as of 18 Oct 22
 - Build freeze high temp warning system and test by moving sensor out of freezer
 - Image analysis on esp32-cam (garbage bin movement detection) or other technique`
-----------------------------------------------------------------------------
+- Create motion sensor to work with back deck light
 xxx  Alexa responses to queries about washer and dryer status
 xxx  4 cell battery pack for dryer mpu sensor  xxx
 xxx- Expose dryer mpu sensor state to Alexa for relible voice query xxx
