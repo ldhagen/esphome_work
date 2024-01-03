@@ -10,6 +10,9 @@ esp32:
     version: latest
     platform_version: 6.4.0
 
+
+
+
 # Enable logging
 logger:
 
@@ -67,6 +70,52 @@ sensor:
     name: 
       "S3 Cam Test 1 WiFi Signal Sensor"
     update_interval: 60s
+
+# Configuration for the status LED light
+light:
+  - platform: status_led
+    id: light0
+    name: "Voice Assistant State"
+    pin:
+      number: GPIO21
+      inverted: true
+
+# Configuration for I2S audio
+i2s_audio:
+  i2s_lrclk_pin: GPIO46 # Note: labeled as "useless"
+  i2s_bclk_pin: GPIO42
+
+# Configuration for the microphone using I2S audio
+microphone:
+  - platform: i2s_audio
+    id: xaio_echo_microphone
+    i2s_din_pin: GPIO41
+    adc_type: external
+    pdm: true
+
+# Configuration for the Voice Assistant
+voice_assistant:
+  microphone: xaio_echo_microphone
+
+# Configuration for the binary sensor (Boot Switch)
+binary_sensor:    
+  - platform: gpio
+    pin: 
+      number: GPIO2
+      mode:
+        input: true
+        pullup: true
+    name: Boot Switch
+    internal: true
+    on_press:
+      - voice_assistant.start:
+      - light.turn_off: light0
+    on_release:
+      - voice_assistant.stop:
+      - light.turn_on: light0
+
+
+
 
 captive_portal:
     
