@@ -56,7 +56,7 @@ sensor:
     name: "Washer Battery Volts"
     id: washer_battery_volts
     update_interval: 10min
-    attenuation: auto 
+    attenuation: auto
     accuracy_decimals: 3
     internal: false
 

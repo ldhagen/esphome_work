@@ -11,8 +11,11 @@ logger:
 
 # Enable Home Assistant API
 api:
+  encryption:
+    key: "TTnz82t3lKyFJXjxYDR2bZdGXFayj2dg/MVSaBjj4S0="
 
 ota:
+  platform: esphome
   password: "86102db08495f808cc7ee4fd360b3946"
 
 wifi:
@@ -33,10 +36,18 @@ i2c:
 sensor:
   - platform: aht10
     temperature:
-      name: "Living Room AHT10 Temperature"
+      name: "xLiving Room AHT10 Temperature"
     humidity:
-      name: "Living Room AHT10 Humidity"
+      name: "xLiving Room AHT10 Humidity"
     update_interval: 60s
+
+  - platform: wifi_signal
+    name: "Node 1 WiFi Signal Sensor"
+    update_interval: 60s
+
+
+web_server:
+  port: 80
 
 
 

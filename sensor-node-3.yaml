@@ -11,6 +11,7 @@ logger:
 api:
 
 ota:
+  platform: esphome
   password: "9077ca3c02ba71bf604acb07f0b314e4"
 
 wifi:
@@ -36,6 +37,9 @@ sensor:
       name: "Guest Room AHT10 Humidity"
     update_interval: 60s
 
+
+web_server:
+  port: 80
 
 
 captive_portal:

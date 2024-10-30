@@ -1,10 +1,10 @@
 esphome:
-  name: ttgo-camera-1
+  name: melife-oled
 
 esp32:
   board: esp32dev
   framework:
-    type: esp-idf
+    type: arduino
 
 # Enable logging
 logger:
@@ -13,8 +13,7 @@ logger:
 api:
 
 ota:
-  platform: esphome
-  password: "10081d1b80488372cf378927020e2243"
+  password: "437ff6e754489c6ad9a0264afbd9e0b1"
 
 wifi:
   ssid: !secret wifi_ssid
@@ -22,15 +21,8 @@ wifi:
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: "Ttgo-Camera-1 Fallback Hotspot"
-    password: "Dioo2L6cXHdP"
-    
-
-binary_sensor:
-  - platform: gpio
-    pin: 33
-    name: "TTGO PIR Sensor"
-    device_class: motion
+    ssid: "Melife-Oled Fallback Hotspot"
+    password: "la9QyjgqSdn9"
 
 font:
   - file: 'FreeMono.ttf'
@@ -38,8 +30,8 @@ font:
     size: 18
   
 i2c:
-  sda: 21
-  scl: 22
+  sda: 5
+  scl: 4
   scan: false
 
 display:
@@ -48,10 +40,6 @@ display:
     address: 0x3C
     lambda: |-
       it.printf(64, 20, id(font1), TextAlign::TOP_CENTER, "Hello Judi!");
-
-web_server:
-  port: 80
-
 
 captive_portal:
     
