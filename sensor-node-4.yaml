@@ -13,6 +13,7 @@ logger:
 api:
 
 ota:
+  platform: esphome
   password: "a3208430816657b90cc4faab9a66f121"
 
 wifi:
@@ -23,26 +24,15 @@ wifi:
   ap:
     ssid: "Sensor-Node-4 Fallback Hotspot"
     password: "8rD3hXrrPPDO"
-i2c:
-  sda: 21
-  scl: 22
-  scan: true
-  id: bus_a
-
-
-sensor:
-  - platform: bme280
-    temperature:
-      name: "BME280 Temperature"
-      oversampling: 16x
-    pressure:
-      name: "BME280 Pressure"
-      filters:
-          - offset: 31
-    humidity:
-      name: "BME280 Humidity"
-    address: 0x76
-    update_interval: 60s
+    
+binary_sensor:
+  - platform: gpio
+    pin: 35
+    name: "PIR Sensor"
+    device_class: motion
+    
+web_server:
+  port: 80
 
 captive_portal:
     
